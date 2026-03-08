@@ -562,11 +562,11 @@ function drawBg() {
     r(63, 5, 7, 10, C.night);
     r(62, 6, 2, 8, C.night);
     // Dark floor
-    r(0, 58, 80, 3, C.dark);
-    r(0, 61, 80, 29, C.darkest);
+    r(0, 64, 80, 3, C.dark);
+    r(0, 67, 80, 23, C.darkest);
   } else {
     // Sky
-    r(0, 0, 80, 58, C.bg);
+    r(0, 0, 80, 64, C.bg);
     // Scrolling clouds
     const cf = Math.floor(animFrame * 0.015);
     drawCloud((cf % 85), 5);
@@ -578,16 +578,16 @@ function drawBg() {
     r(66, 4, 4, 6, C.white);
     r(67, 3, 2, 2, C.white);
     // Floor
-    r(0, 58, 80, 3, C.mid);
-    r(0, 61, 80, 2, C.dark);
-    r(0, 63, 80, 27, C.darkest);
+    r(0, 64, 80, 3, C.mid);
+    r(0, 67, 80, 2, C.dark);
+    r(0, 69, 80, 21, C.darkest);
     // Flowers
     for (const fx of [10, 37, 64]) {
-      px(fx, 58, C.darkest);       // stem
-      px(fx-1, 57, '#f7c59f');     // petals
-      px(fx+1, 57, '#f7c59f');
-      px(fx, 56, C.white);         // center
-      px(fx, 57, '#f7c59f');
+      px(fx, 64, C.darkest);       // stem
+      px(fx-1, 63, '#f7c59f');     // petals
+      px(fx+1, 63, '#f7c59f');
+      px(fx, 62, C.white);         // center
+      px(fx, 63, '#f7c59f');
     }
   }
 }
@@ -911,12 +911,12 @@ function render() {
   }
 
   // Poop
-  if (state.poop) drawPoop(60, 43);
+  if (state.poop) drawPoop(60, 27);
 
   // Character wander
   wanderT += 0.008;
   const cx = Math.floor(28 + Math.sin(wanderT) * 8);
-  const cy = 38;
+  const cy = 22;
 
   // Action visuals
   if (curAction === 'food') {
