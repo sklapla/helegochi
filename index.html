@@ -358,7 +358,7 @@
       <div class="decor-dot"></div>
     </div>
 
-    <div class="hint">[1] JÍDLO &nbsp;[2] HRA &nbsp;[3] SPÁT &nbsp;[4] LÉK</div>
+    <div class="hint">[1] JÍDLO &nbsp;[2] HRA/ÚKLID &nbsp;[3] SPÁT &nbsp;[4] LÉK</div>
 
     <div class="buttons">
       <button class="btn" id="btnFood" onclick="doAction('food')">
@@ -366,8 +366,8 @@
         <span class="btn-label">JÍDLO</span>
       </button>
       <button class="btn" id="btnPlay" onclick="doAction('play')">
-        <span class="btn-icon">🎮</span>
-        <span class="btn-label">HRA</span>
+        <span class="btn-icon" id="btnPlayIcon">🎮</span>
+        <span class="btn-label" id="btnPlayLabel">HRA</span>
       </button>
       <button class="btn" id="btnSleep" onclick="doAction('sleep')">
         <span class="btn-icon">💤</span>
@@ -964,6 +964,17 @@ function renderUI() {
 
   const needsAttention = state.hunger < 4 || state.happiness < 4 || state.poop || state.sick;
   document.getElementById('notif').style.display = (needsAttention && state.hatched && state.alive) ? 'block' : 'none';
+
+  // Toggle play/clean button
+  const playIcon  = document.getElementById('btnPlayIcon');
+  const playLabel = document.getElementById('btnPlayLabel');
+  if (state.poop) {
+    playIcon.textContent  = '🧹';
+    playLabel.textContent = 'ÚKLID';
+  } else {
+    playIcon.textContent  = '🎮';
+    playLabel.textContent = 'HRA';
+  }
 }
 
 // ─── MESSAGES ─────────────────────────────────────────────────────────────────
