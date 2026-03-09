@@ -416,7 +416,7 @@
 <div id="offlineNotice"></div>
 
 <div class="egg-picker" id="eggPicker">
-  <span class="egg-picker-label">VAJÍČKO:</span>
+  <span class="egg-picker-label">BARVA:</span>
 </div>
 
 <script>
@@ -714,9 +714,10 @@ function drawHelego(x, y, mood) {
   const bob = Math.floor(Math.sin(animFrame * 0.12) * 1);
   const yy  = y + (mood === 'sleeping' ? 0 : bob);
 
-  // Body color: green-ish if sick
-  const body    = state.sick ? '#b8c840' : C.white;
-  const outline = C.darkest;
+  // Body color: from egg palette, green-ish if sick
+  const pal    = eggPal();
+  const body   = state.sick ? '#b8c840' : pal.body;
+  const outline = pal.outline;
 
   if (mood === 'sleeping') {
     drawSleeping(x, yy);
@@ -841,8 +842,9 @@ function drawHelego(x, y, mood) {
 }
 
 function drawSleeping(x, y) {
-  const outline = C.darkest;
-  const body    = C.mid;
+  const pal    = eggPal();
+  const outline = pal.outline;
+  const body    = pal.mid;
 
   // Rounded sleeping blob (lower, wider)
   r(x+2, y+4,  10, 1, outline);
